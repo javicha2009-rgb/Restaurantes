@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Restaurantes - Mesa Link Order App
 
 ## Project info
 
