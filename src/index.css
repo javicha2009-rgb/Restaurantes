@@ -1,0 +1,430 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@300;400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional Corporate Color Palette */
+
+@layer base {
+  :root {
+    /* Base colors - Clean corporate whites and grays */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 15%;
+
+    /* Primary color - Professional dark blue/navy */
+    --primary: 210 100% 15%; /* Deep corporate navy */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 0 0% 15%;
+
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 15%;
+
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 85%;
+    --input: 0 0% 100%;
+    --ring: 210 100% 15%;
+
+    --radius: 0rem; /* Square corners for professional look */
+
+    /* Sidebar colors */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 15%;
+    --sidebar-primary: 210 100% 15%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 95%;
+    --sidebar-accent-foreground: 0 0% 15%;
+    --sidebar-border: 0 0% 85%;
+    --sidebar-ring: 210 100% 15%;
+
+    /* Status colors - Professional and subtle */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 15%;
+    
+    --error: 0 65% 45%;
+    --error-foreground: 0 0% 100%;
+    
+    --info: 210 100% 15%;
+    --info-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 210 100% 85%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 210 100% 85%;
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 210 100% 85%;
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 210 100% 85%;
+
+    --success: 142 76% 46%;
+    --success-foreground: 0 0% 10%;
+    
+    --warning: 38 92% 60%;
+    --warning-foreground: 0 0% 10%;
+    
+    --error: 0 65% 55%;
+    --error-foreground: 0 0% 95%;
+    
+    --info: 210 100% 85%;
+    --info-foreground: 0 0% 10%;
+  }
+}
+
+/* Base styles */
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground;
+}
+
+/* Typography */
+h1 {
+  @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
+}
+
+h2 {
+  @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
+}
+
+h3 {
+  @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+}
+
+h4 {
+  @apply scroll-m-20 text-xl font-semibold tracking-tight;
+}
+
+p {
+  @apply leading-7 [&:not(:first-child)]:mt-6;
+}
+
+/* Button Components */
+.btn {
+  @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+}
+
+.btn-primary {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+}
+
+.btn-destructive {
+  @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
+}
+
+.btn-outline {
+  @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+}
+
+.btn-ghost {
+  @apply hover:bg-accent hover:text-accent-foreground;
+}
+
+.btn-link {
+  @apply text-primary underline-offset-4 hover:underline;
+}
+
+/* Card Components */
+.card {
+  @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+}
+
+.card-header {
+  @apply flex flex-col space-y-1.5 p-6;
+}
+
+.card-title {
+  @apply text-2xl font-semibold leading-none tracking-tight;
+}
+
+.card-description {
+  @apply text-sm text-muted-foreground;
+}
+
+.card-content {
+  @apply p-6 pt-0;
+}
+
+.card-footer {
+  @apply flex items-center p-6 pt-0;
+}
+
+/* Table Components */
+.table {
+  @apply w-full caption-bottom text-sm;
+}
+
+.table-header {
+  @apply [&_tr]:border-b;
+}
+
+.table-body {
+  @apply [&_tr:last-child]:border-0;
+}
+
+.table-footer {
+  @apply border-t bg-muted/50 font-medium [&>tr]:last:border-b-0;
+}
+
+.table-row {
+  @apply border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted;
+}
+
+.table-head {
+  @apply h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0;
+}
+
+.table-cell {
+  @apply p-4 align-middle [&:has([role=checkbox])]:pr-0;
+}
+
+/* Forms */
+.input {
+  @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.textarea {
+  @apply flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+/* Navigation Components */
+.nav-link {
+  @apply flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary;
+}
+
+.nav-link.active {
+  @apply bg-muted text-primary;
+}
+
+/* Corporate Layout Utilities */
+.container-corporate {
+  @apply container mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.container-professional {
+  @apply container mx-auto px-6 sm:px-8 lg:px-12 max-w-7xl;
+}
+
+.page-header {
+  @apply border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60;
+}
+
+.sidebar-corporate {
+  @apply hidden border-r bg-muted/40 md:block;
+}
+
+/* Professional Navigation */
+.nav-professional {
+  @apply bg-card border-b border-border shadow-sm;
+}
+
+/* Professional Cards */
+.card-corporate {
+  @apply bg-card border border-border shadow-sm hover:shadow-md transition-shadow duration-200;
+}
+
+/* Professional Buttons */
+.btn-professional {
+  @apply transition-all duration-200 hover:scale-105 focus:scale-105;
+}
+
+/* Professional Grid */
+.grid-professional {
+  @apply grid gap-6 md:gap-8;
+}
+
+/* Professional Sections */
+.section-professional {
+  @apply py-8 md:py-12;
+}
+
+/* Professional Input */
+.input-professional {
+  @apply transition-all duration-200 focus:shadow-md;
+}
+
+/* Professional Text Colors */
+.text-corporate {
+  @apply text-foreground;
+}
+
+.text-corporate-muted {
+  @apply text-muted-foreground;
+}
+
+/* Sections and Spacing */
+.section {
+  @apply py-12 md:py-16 lg:py-20;
+}
+
+.grid-layout {
+  @apply grid gap-6 md:grid-cols-2 lg:grid-cols-3;
+}
+
+/* Status Badges */
+.badge-success {
+  @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent;
+  background-color: hsl(var(--success));
+  color: hsl(var(--success-foreground));
+}
+
+.badge-success:hover {
+  background-color: hsl(var(--success) / 0.8);
+}
+
+.badge-warning {
+  @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent;
+  background-color: hsl(var(--warning));
+  color: hsl(var(--warning-foreground));
+}
+
+.badge-warning:hover {
+  background-color: hsl(var(--warning) / 0.8);
+}
+
+.badge-error {
+  @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent;
+  background-color: hsl(var(--error));
+  color: hsl(var(--error-foreground));
+}
+
+.badge-error:hover {
+  background-color: hsl(var(--error) / 0.8);
+}
+
+.badge-info {
+  @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent;
+  background-color: hsl(var(--info));
+  color: hsl(var(--info-foreground));
+}
+
+.badge-info:hover {
+  background-color: hsl(var(--info) / 0.8);
+}
+
+/* Spacing Utilities */
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  @apply mt-6;
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  @apply mt-4;
+}
+
+.space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  @apply mt-8;
+}
+
+/* Focus States */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+}
+
+/* Text Utilities */
+.text-gradient {
+  @apply bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent;
+}
+
+/* Global Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Source Sans Pro', 'Roboto', 'Open Sans', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
